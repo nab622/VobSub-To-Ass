@@ -1,6 +1,3 @@
-<p align="center"><img src="https://raw.githubusercontent.com/vincrichard/VobSub-ML-OCR/main/fig/logo.png" alt="logo" width="300px" /></p>
-
-----
 # VobSub Image Extractor and OCR
 
 This is a Python program designed to extract images from VobSub (`.sub/.idx`) files and convert them to text using OCR (Optical Character Recognition).
