@@ -51,7 +51,7 @@ The arguments for this script are:
 * `--crop_data` Optional - the parent video's crop data from FFmpeg, I.E. 720:360:0:58
 
 * `--time_scale` Optional - the multiplier to use on the subtitle timing.
-* `--time_offset` Optional - the this will shift the subtitle timing by the specified number of seconds.
+* `--time_offset` Optional - this will shift the subtitle timing by the specified number of seconds.
 
 * `--resolution_scale` (default = 2) Optional - this value states how much to increase the SubStation Alpha resolution. All other items are scaled to match, so this will not make any visual changes.
 

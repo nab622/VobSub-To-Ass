@@ -2577,7 +2577,7 @@ parser.add_argument("--use_sub_timestamps", default=False, required=False, help=
 parser.add_argument("--crop_data", required=False, help="Optional - the parent video's crop data from FFmpeg, I.E. 720:360:0:58", type=int)
 
 parser.add_argument("--time_scale", required=False, help="Optional - the multiplier to use on the subtitle timing.", type=float)
-parser.add_argument("--time_offset", required=False, help="Optional - the this will shift the subtitle timing by the specified number of seconds.", type=float)
+parser.add_argument("--time_offset", required=False, help="Optional - this will shift the subtitle timing by the specified number of seconds.", type=float)
 
 parser.add_argument("--resolution_scale", default=2, required=False, help="Optional - this value states how much to increase the SubStation Alpha resolution. All other items are scaled to match, so this will not make any visual changes.", type=int)
 
