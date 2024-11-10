@@ -28,7 +28,7 @@ To run this script:
 python3 VobSubToAss.py <arguments>
 ```
 
-To correctly package the resulting subtitles into a video file, ** YOU MUST USE AN MKV FILE ** and you ** MUST ** attach the font to the final file, or it will not display correctly.
+To correctly package the resulting subtitles into a video file, *** YOU MUST USE AN MKV FILE *** and you *** MUST *** attach the font to the final file, or it will not display correctly.
 Attaching fonts to MKV files is very easy to do with `mkvmerge`. When creating an MKV file, add the subtitle file, then add the following arguments to the end of the command:
 
 `--attachment-mime-type` application/x-truetype-font `--attach-file` <Font Name>
@@ -88,7 +88,7 @@ The arguments for this script are:
 `-print_format` json
 
 Use the following Python code to clean up the FFmpeg data dump:
-
+```python
 	subsOutput = []
 	for i in range(len(response)):
 		startTime = float(response[i]['pts_time'])
@@ -111,13 +111,14 @@ Use the following Python code to clean up the FFmpeg data dump:
 			newSubData += subData[x]
 			x += 1
 		subsOutput.append({ 'startTime' : startTime, 'data' : newSubData })
-
+```
 
 Next, extract the `IDX/SUB` files. We can not use them for the subtitles themselves, because the timing will be wrong. However, we do have to use the IDX file to get the palette.
 Split the palette data into a list of 16 elements, one element for each color's hexadecimal values.
 
 If you use `mplayer` to perform this extraction, there is a bug in mplayer that incorrectly reports the palette. To fix this, use the following Python code, and run the `idxToRGB` function below on the palette:
 
+```python
 def idxToRGB(color):
 	# Apparently IDX files are calculated wrong and are neither RGB nor YUV. What a shock, another bug.
 	return YUVStringToRGBString(vobsub_rgb_to_yuv(int(color, 16)))
@@ -169,14 +170,16 @@ def YUVToRGB(inputY, inputU, inputV):
 	outputB = 1.164 * inputY + 2.017 * inputU
 
 	return [ clamp(int(outputR), 0, 255), clamp(int(outputG), 0, 255), clamp(int(outputB), 0, 255) ]
-
+```
 
 ## Finally - you can put everything together in a JSON file.
 
-`data` = {
-	`"palette"`		: <Palette>,
-	`"subpictures"`	: <Subtitle Data Packets>
+```
+data = {
+	"palette"		: <Palette List>,
+	"subpictures"	: <Subtitle Data Packets List>
 }
+```
 
 Write this to a `JSON` file somewhere on your disk. This will be the file you give the script with `input_file`.
 
