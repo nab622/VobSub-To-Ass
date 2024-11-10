@@ -28,7 +28,7 @@ To run this script:
 python3 VobSubToAss.py <arguments>
 ```
 
-To correctly package the resulting subtitles into a video file, *** YOU MUST USE AN MKV FILE *** and you *** MUST *** attach the font to the final file, or it will not display correctly.
+To correctly package the resulting subtitles into a video file, ***YOU MUST USE AN MKV FILE*** and you ***MUST*** attach the font to the final file, or it will not display correctly.
 Attaching fonts to MKV files is very easy to do with `mkvmerge`. When creating an MKV file, add the subtitle file, then add the following arguments to the end of the command:
 
 `--attachment-mime-type` application/x-truetype-font `--attach-file` <Font Name>
