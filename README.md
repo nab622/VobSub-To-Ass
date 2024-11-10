@@ -18,7 +18,7 @@ This library is based on [VobSub-ML-OCR](https://github.com/vincrichard/VobSub-M
 
 The only requirement to run this library is to have Python 3. I don't know exactly which version is required, just use a reasonably up-to-date one and you should be fine.
 
-You should also have ffprobe (Part of ffmpeg), and something to rip IDX/SUB files with (I use `mplayer`).
+You should also have `mkvmerge`, `ffprobe` (Part of ffmpeg), and something to rip IDX/SUB files with (I use `mplayer`).
 
 ## Usage
 
