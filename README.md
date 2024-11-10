@@ -1,8 +1,9 @@
-# VobSub Image Extractor and OCR
+# VobSub Image Extractor/Converter
 
-This is a Python program designed to extract images from VobSub (`.sub/.idx`) files and convert them to text using OCR (Optical Character Recognition).
+This is a Python program designed to extract images from .VOB files and convert them to SubStation Alpha format (.ass). The resulting files preserve the original color and appearance of the VobSub files, meaning all langauges are preserved correctly.
 
-The extraction of the VobSub as been taken from [SubtitleEdit](https://github.com/SubtitleEdit/subtitleedit) and ported to python.
+This library is based on [VobSub-ML-OCR](https://github.com/vincrichard/VobSub-ML-OCR), which is a python port of [SubtitleEdit](https://github.com/SubtitleEdit/subtitleedit) code.
+
 
 ## Features
 
@@ -15,7 +16,9 @@ The extraction of the VobSub as been taken from [SubtitleEdit](https://github.co
 
 ## Installation and Setup
 
-The only requirement for this library is to have Python 3. I don't know exactly which version is required, just use a reasonably up-to-date one and you should be fine.
+The only requirement to run this library is to have Python 3. I don't know exactly which version is required, just use a reasonably up-to-date one and you should be fine.
+
+You should also have ffprobe (Part of ffmpeg), 
 
 ## Usage
 
@@ -110,9 +113,10 @@ Use the following Python code to clean up the FFmpeg data dump:
 		subsOutput.append({ 'startTime' : startTime, 'data' : newSubData })
 
 
-Next, use `mplayer` to extract the `IDX/SUB` files. We can not use them for the subtitles themselves, because the timing will be wrong. However, we do have to use the IDX file to get the palette.
-Once the palette data has been extracted...there is a bug in mplayer that incorrectly reports the palette. To fix this, use the following Python code:
-Split the palette data into a list of 16 elements, one element for each color's hexadecimal values, then run the `idxToRGB` function below on the palette:
+Next, extract the `IDX/SUB` files. We can not use them for the subtitles themselves, because the timing will be wrong. However, we do have to use the IDX file to get the palette.
+Split the palette data into a list of 16 elements, one element for each color's hexadecimal values.
+
+If you use `mplayer` to perform this extraction, there is a bug in mplayer that incorrectly reports the palette. To fix this, use the following Python code, and run the `idxToRGB` function below on the palette:
 
 def idxToRGB(color):
 	# Apparently IDX files are calculated wrong and are neither RGB nor YUV. What a shock, another bug.
@@ -167,11 +171,11 @@ def YUVToRGB(inputY, inputU, inputV):
 	return [ clamp(int(outputR), 0, 255), clamp(int(outputG), 0, 255), clamp(int(outputB), 0, 255) ]
 
 
-Finally - you can put everything together in a JSON file.
+## Finally - you can put everything together in a JSON file.
 
 `data` = {
-	"palette"		: <Palette>,
-	"subpictures"	: <Subtitle Data Packets>
+	`"palette"`		: <Palette>,
+	`"subpictures"`	: <Subtitle Data Packets>
 }
 
 Write this to a `JSON` file somewhere on your disk. This will be the file you give the script with `input_file`.
