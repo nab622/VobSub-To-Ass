@@ -172,8 +172,7 @@ def YUVToRGB(inputY, inputU, inputV):
 	return [ clamp(int(outputR), 0, 255), clamp(int(outputG), 0, 255), clamp(int(outputB), 0, 255) ]
 ```
 
-## Finally - you can put everything together in a JSON file.
-
+Finally, you can put everything together in a `JSON` object:
 ```
 data = {
 	"palette"		: <Palette List>,
@@ -181,7 +180,7 @@ data = {
 }
 ```
 
-Write this to a `JSON` file somewhere on your disk. This will be the file you give the script with `input_file`.
+Write this object to a `JSON` file somewhere on your disk. This will be the file you give the script with `input_file`.
 
 
 ## Happy converting!
