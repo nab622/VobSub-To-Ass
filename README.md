@@ -73,7 +73,7 @@ The arguments for this script are:
 * `--min_width` (default = 5) Optional - this sets the minimum width for a subtitle. Anything smaller than this will be ignored. This may be important in cases where the duration is controlled by the timing on the next subtitle. Set to 0 to use all subtitles.
 
 
- *** For those who wish to use JSON input, here is how to generate it. ***
+## For those who wish to use JSON input, here is how to generate it.
 
 * Use `ffprobe` to extract the VobSub packet data from the VOB file:
 
@@ -184,5 +184,5 @@ data = {
 Write this to a `JSON` file somewhere on your disk. This will be the file you give the script with `input_file`.
 
 
-Happy converting!
+## Happy converting!
 
